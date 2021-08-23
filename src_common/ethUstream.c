@@ -78,11 +78,11 @@ void copyTxData(txContext_t *context, uint8_t *out, uint32_t length) {
 
 void decodeSmartTxGas(txContext_t *context, uint8_t *rlpP) {
     uint32_t offset, tmpCurrentFieldLength;
-    bool tmpCurrentFieldIsList, decoded;
+    bool tmpCurrentFieldIsList;
     if (*rlpP++ != 128 || *rlpP++ != 128) {
         THROW(EXCEPTION);
     }
-    decoded = rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
     if (tmpCurrentFieldLength > INT256_LENGTH) {
         THROW(EXCEPTION);
     }
@@ -90,7 +90,7 @@ void decodeSmartTxGas(txContext_t *context, uint8_t *rlpP) {
     memmove(context->content->startgas.value, rlpP, tmpCurrentFieldLength);  // copy gas Limit
     context->content->startgas.length = tmpCurrentFieldLength;
     rlpP += tmpCurrentFieldLength;
-    decoded = rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
     if (tmpCurrentFieldLength > INT256_LENGTH) {
         THROW(EXCEPTION);
     }
@@ -101,14 +101,14 @@ void decodeSmartTxGas(txContext_t *context, uint8_t *rlpP) {
 
 void decodeThetaTxValue(txContext_t *context, uint8_t *rlpP) {
     uint32_t offset, tmpCurrentFieldLength;
-    bool tmpCurrentFieldIsList, decoded;
+    bool tmpCurrentFieldIsList;
     if (*rlpP != 128) {  // Theta value
         context->content->thetaCoinName = true;
     } else {  // Tfuel value
         rlpP++;
         context->content->thetaCoinName = false;
     }
-    decoded = rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
     if (tmpCurrentFieldLength > INT256_LENGTH) {
         THROW(EXCEPTION);
     }
@@ -138,28 +138,26 @@ void decodeThetaTx(txContext_t *context, uint32_t length) {
     }
     PRINTF("decodeThetaTx %.*H\n", length, context->workBuffer);
     uint32_t offset, tmpCurrentFieldLength;
-    bool decoded, tmpCurrentFieldIsList;
+    bool tmpCurrentFieldIsList;
     uint8_t *rlpP = context->workBuffer, *tmpRLPPointer;
     BEGIN_TRY {
         TRY {
             if (context->content->thetaDecodeSatus == THETATX_INIT) {
-                decoded =
-                    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+                rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
                 rlpP += offset + tmpCurrentFieldLength;  // skip chainID
                 context->content->thetaTxType = *rlpP;   // get Theta tx type
                 rlpP++;
                 length -= offset + tmpCurrentFieldLength + 1;
-                decoded =
-                    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+                rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
                 rlpP += offset;
                 length -= offset;
                 if (context->content->thetaTxType != THETA_SMART_CONTRACT) {  // decode gas
                     rlpP += 2;
                     length -= 2;
-                    decoded = rlpDecodeLength(rlpP,
-                                              &tmpCurrentFieldLength,
-                                              &offset,
-                                              &tmpCurrentFieldIsList);
+                    rlpDecodeLength(rlpP,
+                                    &tmpCurrentFieldLength,
+                                    &offset,
+                                    &tmpCurrentFieldIsList);
                     if (tmpCurrentFieldLength > INT256_LENGTH) {
                         THROW(EXCEPTION);
                     }
@@ -173,8 +171,7 @@ void decodeThetaTx(txContext_t *context, uint32_t length) {
                     rlpP += tmpCurrentFieldLength;
                     length -= offset + tmpCurrentFieldLength;
                 }
-                decoded =
-                    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+                rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
                 rlpP += offset;
                 if (context->content->thetaTxType ==
                     THETA_STAKE_Deposit) {  // decode value for deposit stake tx
@@ -183,8 +180,7 @@ void decodeThetaTx(txContext_t *context, uint32_t length) {
                 }
                 rlpP += tmpCurrentFieldLength;
                 length -= offset + tmpCurrentFieldLength;
-                decoded =
-                    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
+                rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
                 if (tmpCurrentFieldLength + offset >
                     length) {  // Not enought bytes to decode address/value
                     context->content->thetaDecodeSatus = THETATX_PROCESSING;
