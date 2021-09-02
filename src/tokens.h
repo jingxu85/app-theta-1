@@ -64,7 +64,7 @@ static const uint8_t LEDGER_SIGNATURE_PUBLIC_KEY[] = {
 
 #else
 
-#define NUM_TOKENS_THETA            0
+#define NUM_TOKENS_THETA 0
 
 extern tokenDefinition_t const TOKENS_THETA[NUM_TOKENS_THETA];
 

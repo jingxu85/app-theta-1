@@ -22,9 +22,7 @@
 
 #include "os.h"
 
-typedef enum chain_kind_e {
-    CHAIN_KIND_THETA
-} chain_kind_t;
+typedef enum chain_kind_e { CHAIN_KIND_THETA } chain_kind_t;
 
 typedef struct chain_config_s {
     char coinName[10];  // ticker

@@ -154,10 +154,7 @@ void decodeThetaTx(txContext_t *context, uint32_t length) {
                 if (context->content->thetaTxType != THETA_SMART_CONTRACT) {  // decode gas
                     rlpP += 2;
                     length -= 2;
-                    rlpDecodeLength(rlpP,
-                                    &tmpCurrentFieldLength,
-                                    &offset,
-                                    &tmpCurrentFieldIsList);
+                    rlpDecodeLength(rlpP, &tmpCurrentFieldLength, &offset, &tmpCurrentFieldIsList);
                     if (tmpCurrentFieldLength > INT256_LENGTH) {
                         THROW(EXCEPTION);
                     }
