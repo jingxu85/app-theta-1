@@ -183,4 +183,4 @@ include $(BOLOS_SDK)/Makefile.rules
 dep/%.d: %.c Makefile
 
 listvariants:
-	@echo VARIANTS CHAIN ethereum theta
+	@echo VARIANTS CHAIN theta
