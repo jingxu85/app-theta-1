@@ -5,9 +5,6 @@
 #include "ethUtils.h"
 #include "utils.h"
 
-void starkware_print_stark_key(uint8_t *starkKey, char *destination);
-void starkware_print_eth_address(uint8_t *address, char *destination);
-
 typedef struct erc721_parameters_t {
     uint8_t selectorIndex;
     uint8_t address[ADDRESS_LENGTH];
@@ -111,33 +108,6 @@ void erc721_plugin_call(int message, void *parameters) {
             strlcpy(msg->name, "Allowance", msg->nameLength);
             strlcpy(msg->version, "", msg->versionLength);
             msg->result = ETH_PLUGIN_RESULT_OK;
-        } break;
-
-        case ETH_PLUGIN_QUERY_CONTRACT_UI: {
-            ethQueryContractUI_t *msg = (ethQueryContractUI_t *) parameters;
-            erc721_parameters_t *context = (erc721_parameters_t *) msg->pluginContext;
-            switch (msg->screenIndex) {
-                case 0:
-                    strlcpy(msg->title, "Contract Name", msg->titleLength);
-                    starkware_print_eth_address(tmpContent.txContent.destination, msg->msg);
-                    msg->result = ETH_PLUGIN_RESULT_OK;
-                    break;
-
-                case 1:
-                    strlcpy(msg->title, "NFT Contract", msg->titleLength);
-                    starkware_print_eth_address(context->address, msg->msg);
-                    msg->result = ETH_PLUGIN_RESULT_OK;
-                    break;
-
-                case 2:
-                    strlcpy(msg->title, "TokenID", msg->titleLength);
-                    starkware_print_stark_key(context->tokenId, msg->msg);
-                    msg->result = ETH_PLUGIN_RESULT_OK;
-                    break;
-
-                default:
-                    break;
-            }
         } break;
 
         default:

@@ -157,206 +157,14 @@ tokenDefinition_t *getKnownToken(uint8_t *contractAddress) {
     uint32_t numTokens = 0;
     uint32_t i;
     switch (chainConfig->kind) {
-        case CHAIN_KIND_AKROMA:
-            numTokens = NUM_TOKENS_AKROMA;
-            break;
-        case CHAIN_KIND_ETHEREUM:
-            numTokens = NUM_TOKENS_ETHEREUM;
-            break;
-        case CHAIN_KIND_ETHEREUM_CLASSIC:
-            numTokens = NUM_TOKENS_ETHEREUM_CLASSIC;
-            break;
-        case CHAIN_KIND_PIRL:
-            numTokens = NUM_TOKENS_PIRL;
-            break;
-        case CHAIN_KIND_POA:
-            numTokens = NUM_TOKENS_POA;
-            break;
-        case CHAIN_KIND_ARTIS_SIGMA1:
-            numTokens = NUM_TOKENS_ARTIS_SIGMA1;
-            break;
-        case CHAIN_KIND_ARTIS_TAU1:
-            numTokens = NUM_TOKENS_ARTIS_TAU1;
-            break;
-        case CHAIN_KIND_RSK:
-            numTokens = NUM_TOKENS_RSK;
-            break;
-        case CHAIN_KIND_EXPANSE:
-            numTokens = NUM_TOKENS_EXPANSE;
-            break;
-        case CHAIN_KIND_UBIQ:
-            numTokens = NUM_TOKENS_UBIQ;
-            break;
-        case CHAIN_KIND_WANCHAIN:
-            numTokens = NUM_TOKENS_WANCHAIN;
-            break;
-        case CHAIN_KIND_KUSD:
-            numTokens = NUM_TOKENS_KUSD;
-            break;
-        case CHAIN_KIND_MUSICOIN:
-            numTokens = NUM_TOKENS_MUSICOIN;
-            break;
-        case CHAIN_KIND_CALLISTO:
-            numTokens = NUM_TOKENS_CALLISTO;
-            break;
-        case CHAIN_KIND_ETHERSOCIAL:
-            numTokens = NUM_TOKENS_ETHERSOCIAL;
-            break;
-        case CHAIN_KIND_ELLAISM:
-            numTokens = NUM_TOKENS_ELLAISM;
-            break;
-        case CHAIN_KIND_ETHER1:
-            numTokens = NUM_TOKENS_ETHER1;
-            break;
-        case CHAIN_KIND_ETHERGEM:
-            numTokens = NUM_TOKENS_ETHERGEM;
-            break;
-        case CHAIN_KIND_ATHEIOS:
-            numTokens = NUM_TOKENS_ATHEIOS;
-            break;
-        case CHAIN_KIND_GOCHAIN:
-            numTokens = NUM_TOKENS_GOCHAIN;
-            break;
-        case CHAIN_KIND_MIX:
-            numTokens = NUM_TOKENS_MIX;
-            break;
-        case CHAIN_KIND_REOSC:
-            numTokens = NUM_TOKENS_REOSC;
-            break;
-        case CHAIN_KIND_HPB:
-            numTokens = NUM_TOKENS_HPB;
-            break;
-        case CHAIN_KIND_TOMOCHAIN:
-            numTokens = NUM_TOKENS_TOMOCHAIN;
-            break;
-        case CHAIN_KIND_TOBALABA:
-            numTokens = NUM_TOKENS_TOBALABA;
-            break;
-        case CHAIN_KIND_DEXON:
-            numTokens = NUM_TOKENS_DEXON;
-            break;
-        case CHAIN_KIND_VOLTA:
-            numTokens = NUM_TOKENS_VOLTA;
-            break;
-        case CHAIN_KIND_EWC:
-            numTokens = NUM_TOKENS_EWC;
-            break;
-        case CHAIN_KIND_WEBCHAIN:
-            numTokens = NUM_TOKENS_WEBCHAIN;
-            break;
-        case CHAIN_KIND_THUNDERCORE:
-            numTokens = NUM_TOKENS_THUNDERCORE;
-            break;
-        case CHAIN_KIND_FLARE:
-            numTokens = NUM_TOKENS_FLARE;
-            break;
         case CHAIN_KIND_THETA:
             numTokens = NUM_TOKENS_THETA;
-            break;
-        case CHAIN_KIND_BSC:
-            numTokens = NUM_TOKENS_BSC;
             break;
     }
     for (i = 0; i < numTokens; i++) {
         switch (chainConfig->kind) {
-            case CHAIN_KIND_AKROMA:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_AKROMA[i]);
-                break;
-            case CHAIN_KIND_ETHEREUM:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ETHEREUM[i]);
-                break;
-            case CHAIN_KIND_ETHEREUM_CLASSIC:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ETHEREUM_CLASSIC[i]);
-                break;
-            case CHAIN_KIND_PIRL:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_PIRL[i]);
-                break;
-            case CHAIN_KIND_POA:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_POA[i]);
-                break;
-            case CHAIN_KIND_ARTIS_SIGMA1:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ARTIS_SIGMA1[i]);
-                break;
-            case CHAIN_KIND_ARTIS_TAU1:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ARTIS_TAU1[i]);
-                break;
-            case CHAIN_KIND_RSK:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_RSK[i]);
-                break;
-            case CHAIN_KIND_EXPANSE:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_EXPANSE[i]);
-                break;
-            case CHAIN_KIND_UBIQ:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_UBIQ[i]);
-                break;
-            case CHAIN_KIND_WANCHAIN:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_WANCHAIN[i]);
-                break;
-            case CHAIN_KIND_KUSD:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_KUSD[i]);
-                break;
-            case CHAIN_KIND_MUSICOIN:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_MUSICOIN[i]);
-                break;
-            case CHAIN_KIND_CALLISTO:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_CALLISTO[i]);
-                break;
-            case CHAIN_KIND_ETHERSOCIAL:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ETHERSOCIAL[i]);
-                break;
-            case CHAIN_KIND_ELLAISM:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ELLAISM[i]);
-                break;
-            case CHAIN_KIND_ETHER1:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ETHER1[i]);
-                break;
-            case CHAIN_KIND_ETHERGEM:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ETHERGEM[i]);
-                break;
-            case CHAIN_KIND_ATHEIOS:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_ATHEIOS[i]);
-                break;
-            case CHAIN_KIND_GOCHAIN:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_GOCHAIN[i]);
-                break;
-            case CHAIN_KIND_MIX:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_MIX[i]);
-                break;
-            case CHAIN_KIND_REOSC:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_REOSC[i]);
-                break;
-            case CHAIN_KIND_HPB:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_HPB[i]);
-                break;
-            case CHAIN_KIND_TOMOCHAIN:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_TOMOCHAIN[i]);
-                break;
-            case CHAIN_KIND_TOBALABA:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_TOBALABA[i]);
-                break;
-            case CHAIN_KIND_DEXON:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_DEXON[i]);
-                break;
-            case CHAIN_KIND_VOLTA:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_VOLTA[i]);
-                break;
-            case CHAIN_KIND_EWC:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_EWC[i]);
-                break;
-            case CHAIN_KIND_WEBCHAIN:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_WEBCHAIN[i]);
-                break;
-            case CHAIN_KIND_THUNDERCORE:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_THUNDERCORE[i]);
-                break;
-            case CHAIN_KIND_FLARE:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_FLARE[i]);
-                break;
             case CHAIN_KIND_THETA:
                 currentToken = (tokenDefinition_t *) PIC(&TOKENS_THETA[i]);
-                break;
-            case CHAIN_KIND_BSC:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_BSC[i]);
                 break;
         }
         if (memcmp(currentToken->address, tmpContent.txContent.destination, ADDRESS_LENGTH) == 0) {
@@ -417,52 +225,6 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
 
 #endif  // HAVE_WALLET_ID_SDK
 
-#ifdef HAVE_STARKWARE
-
-            if (G_io_apdu_buffer[OFFSET_CLA] == STARKWARE_CLA) {
-                switch (G_io_apdu_buffer[OFFSET_INS]) {
-                    case STARKWARE_INS_GET_PUBLIC_KEY:
-                        handleStarkwareGetPublicKey(G_io_apdu_buffer[OFFSET_P1],
-                                                    G_io_apdu_buffer[OFFSET_P2],
-                                                    G_io_apdu_buffer + OFFSET_CDATA,
-                                                    G_io_apdu_buffer[OFFSET_LC],
-                                                    flags,
-                                                    tx);
-                        break;
-                    case STARKWARE_INS_SIGN_MESSAGE:
-                        handleStarkwareSignMessage(G_io_apdu_buffer[OFFSET_P1],
-                                                   G_io_apdu_buffer[OFFSET_P2],
-                                                   G_io_apdu_buffer + OFFSET_CDATA,
-                                                   G_io_apdu_buffer[OFFSET_LC],
-                                                   flags,
-                                                   tx);
-                        break;
-                    case STARKWARE_INS_PROVIDE_QUANTUM:
-                        handleStarkwareProvideQuantum(G_io_apdu_buffer[OFFSET_P1],
-                                                      G_io_apdu_buffer[OFFSET_P2],
-                                                      G_io_apdu_buffer + OFFSET_CDATA,
-                                                      G_io_apdu_buffer[OFFSET_LC],
-                                                      flags,
-                                                      tx);
-                        break;
-                    case STARKWARE_INS_UNSAFE_SIGN:
-                        handleStarkwareUnsafeSign(G_io_apdu_buffer[OFFSET_P1],
-                                                  G_io_apdu_buffer[OFFSET_P2],
-                                                  G_io_apdu_buffer + OFFSET_CDATA,
-                                                  G_io_apdu_buffer[OFFSET_LC],
-                                                  flags,
-                                                  tx);
-                        break;
-                    default:
-                        THROW(0x6D00);
-                        break;
-                }
-                CLOSE_TRY;
-                return;
-            }
-
-#endif
-
             if (G_io_apdu_buffer[OFFSET_CLA] != CLA) {
                 THROW(0x6E00);
             }
@@ -476,24 +238,6 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                                        G_io_apdu_buffer[OFFSET_LC],
                                        flags,
                                        tx);
-                    break;
-
-                case INS_PROVIDE_ERC20_TOKEN_INFORMATION:
-                    handleProvideErc20TokenInformation(G_io_apdu_buffer[OFFSET_P1],
-                                                       G_io_apdu_buffer[OFFSET_P2],
-                                                       G_io_apdu_buffer + OFFSET_CDATA,
-                                                       G_io_apdu_buffer[OFFSET_LC],
-                                                       flags,
-                                                       tx);
-                    break;
-
-                case INS_SET_EXTERNAL_PLUGIN:
-                    handleSetExternalPlugin(G_io_apdu_buffer[OFFSET_P1],
-                                            G_io_apdu_buffer[OFFSET_P2],
-                                            G_io_apdu_buffer + OFFSET_CDATA,
-                                            G_io_apdu_buffer[OFFSET_LC],
-                                            flags,
-                                            tx);
                     break;
 
                 case INS_SIGN:
@@ -533,29 +277,6 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                                             flags,
                                             tx);
                     break;
-
-#ifdef HAVE_ETH2
-
-                case INS_GET_ETH2_PUBLIC_KEY:
-                    memset(tmpCtx.transactionContext.tokenSet, 0, MAX_TOKEN);
-                    handleGetEth2PublicKey(G_io_apdu_buffer[OFFSET_P1],
-                                           G_io_apdu_buffer[OFFSET_P2],
-                                           G_io_apdu_buffer + OFFSET_CDATA,
-                                           G_io_apdu_buffer[OFFSET_LC],
-                                           flags,
-                                           tx);
-                    break;
-
-                case INS_SET_ETH2_WITHDRAWAL_INDEX:
-                    handleSetEth2WithdrawalIndex(G_io_apdu_buffer[OFFSET_P1],
-                                                 G_io_apdu_buffer[OFFSET_P2],
-                                                 G_io_apdu_buffer + OFFSET_CDATA,
-                                                 G_io_apdu_buffer[OFFSET_LC],
-                                                 flags,
-                                                 tx);
-                    break;
-
-#endif
 
 #if 0
         case 0xFF: // return to dashboard

@@ -5,10 +5,6 @@ bool erc721_plugin_available_check(void);
 
 void erc20_plugin_call(int message, void* parameters);
 void erc721_plugin_call(int message, void* parameters);
-void compound_plugin_call(int message, void* parameters);
-#ifdef HAVE_STARKWARE
-void starkware_plugin_call(int message, void* parameters);
-#endif
 #ifdef HAVE_ETH2
 void eth2_plugin_call(int message, void* parameters);
 #endif
@@ -111,25 +107,9 @@ const internalEthPlugin_t INTERNAL_ETH_PLUGINS[] = {
      "-er721",
      erc721_plugin_call},
 
-    {NULL,
-     (const uint8_t**) COMPOUND_SELECTORS,
-     NUM_COMPOUND_SELECTORS,
-     "-cmpd",
-     compound_plugin_call},
-
 #ifdef HAVE_ETH2
 
     {NULL, (const uint8_t**) ETH2_SELECTORS, NUM_ETH2_SELECTORS, "-eth2", eth2_plugin_call},
-
-#endif
-
-#ifdef HAVE_STARKWARE
-
-    {NULL,
-     (const uint8_t**) STARKWARE_SELECTORS,
-     NUM_STARKWARE_SELECTORS,
-     "-strk",
-     starkware_plugin_call},
 
 #endif
 
