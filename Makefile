@@ -121,6 +121,10 @@ ifneq ($(NOCONSENT),)
 DEFINES   += NO_CONSENT
 endif
 
+# Ledger: add the "Pending security review" disclaimer
+APP_LOAD_PARAMS += --tlvraw 9F:01
+DEFINES += HAVE_PENDING_REVIEW_SCREEN
+
 #DEFINES   += HAVE_TOKENS_LIST # Do not activate external ERC-20 support yet
 
 ##############
