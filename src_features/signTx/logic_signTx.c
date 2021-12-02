@@ -78,10 +78,10 @@ customStatus_e customProcessor(txContext_t *context) {
         uint32_t copySize;
         uint32_t fieldPos = context->currentFieldPos;
         if (fieldPos == 0) {  // not reached if a plugin is available
-            if (!N_storage.dataAllowed) {
-                PRINTF("Data field forbidden\n");
-                return CUSTOM_FAULT;
-            }
+            // if (!N_storage.dataAllowed) {
+            //     PRINTF("Data field forbidden\n");
+            //     return CUSTOM_FAULT;
+            // }
             if (!N_storage.contractDetails) {
                 return CUSTOM_NOT_HANDLED;
             }
@@ -428,7 +428,7 @@ void finalizeParsing(bool direct) {
         }
     }
 
-    if (tmpContent.txContent.dataPresent && !N_storage.dataAllowed) {
+    if (tmpContent.txContent.thetaTxType != THETA_SEND_TX && !N_storage.dataAllowed) {
         reportFinalizeError(direct);
         if (!direct) {
             return;
