@@ -201,7 +201,7 @@ void ux_approve_tx(bool fromPlugin) {
     int step = 0;
     ux_approval_tx_flow[step++] = &ux_approval_review_step;
 
-    if (!fromPlugin && tmpContent.txContent.dataPresent && !N_storage.contractDetails) {
+    if (tmpContent.txContent.thetaTxType != THETA_SEND_TX && !fromPlugin && tmpContent.txContent.dataPresent && !N_storage.contractDetails) {
         ux_approval_tx_flow[step++] = &ux_approval_data_warning_step;
     }
 
